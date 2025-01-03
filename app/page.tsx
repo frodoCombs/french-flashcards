@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { WordCard } from '@/components/Card'
 import { FeedbackBanner } from '@/components/FeedbackBanner'
 import { words, Word } from '@/utils/words'
+import SubscribeButton from '@/components/SubscribeButton'
 
 export default function Home() {
   const [currentWord, setCurrentWord] = useState<Word>(words[0])
@@ -36,6 +37,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-background text-foreground">
+      <div>
+      < SubscribeButton/>
+      </div>
       <div className="relative flex flex-col items-center w-full max-w-md">
         <WordCard 
           word={currentWord.word} 
