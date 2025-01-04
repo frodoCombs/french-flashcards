@@ -8,6 +8,7 @@ import {
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Sidebar from '@/components/Sidebar';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,16 +32,28 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-            <SignedOut>
-              {/* <SignInButton /> */}
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-            {children}
+      <html lang="en" className="h-full">
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}>
+          <SignedOut>
+            <div className="flex min-h-full flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+              <SignInButton />
+            </div>
+          </SignedOut>
+          <SignedIn>
+            <div className="h-full relative">
+              <div className="hidden h-full md:flex md:w-72 md:flex-col md:fixed md:inset-y-0 z-[80] bg-gray-900">
+                <div className="p-4">
+                  <UserButton afterSignOutUrl="/" />
+                </div>
+                <Sidebar />
+              </div>
+              <main className="md:pl-72 h-full">
+                <div className="h-full px-4 py-4">
+                  {children}
+                </div>
+              </main>
+            </div>
+          </SignedIn>
         </body>
       </html>
     </ClerkProvider>

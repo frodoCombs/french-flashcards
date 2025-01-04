@@ -95,7 +95,7 @@ export default function BillingPageContent() {
         </Alert>
       )}
 
-      <Card>
+      {/* <Card>
         <CardHeader>
           <CardTitle>Premium Subscription</CardTitle>
           <CardDescription>
@@ -145,7 +145,7 @@ export default function BillingPageContent() {
             </Button>
           )}
         </CardFooter>
-      </Card>
+      </Card> */}
     </div>
   );
 }

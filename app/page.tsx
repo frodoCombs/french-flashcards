@@ -37,9 +37,6 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-background text-foreground">
-      <div>
-      < SubscribeButton/>
-      </div>
       <div className="relative flex flex-col items-center w-full max-w-md">
         <WordCard 
           word={currentWord.word} 
