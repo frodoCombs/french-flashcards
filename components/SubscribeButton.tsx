@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useUser } from '@clerk/nextjs';
+import { Loader2 } from 'lucide-react';
 
 export default function SubscriptionButton() {
     const { user } = useUser();
@@ -25,6 +26,14 @@ export default function SubscriptionButton() {
                 throw new Error('Failed to update subscription');
             }
 
+            const data = await response.json();
+
+            if (action === 'subscribe' && data.url) {
+                // Redirect to Stripe Checkout
+                window.location.href = data.url;
+                return;
+            }
+            
             await user?.reload();
             console.log('Updated user metadata:', user?.publicMetadata);
 
@@ -47,16 +56,28 @@ export default function SubscriptionButton() {
                     disabled={isLoading}
                     className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
                 >
-                    {isLoading ? 'Updating...' : 'Upgrade to Pro'}
-                </button>
+                    {isLoading ? (
+                        <>
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                            Processing...
+                        </>
+                    ) : (
+                        'Upgrade to Pro'
+                    )}                </button>
             ) : (
                 <button
                     onClick={() => handleSubscription('unsubscribe')}
                     disabled={isLoading}
                     className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:opacity-50"
                 >
-                    {isLoading ? 'Updating...' : 'Cancel Subscription'}
-                </button>
+                    {isLoading ? (
+                        <>
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                            Processing...
+                        </>
+                    ) : (
+                        'Cancel Subscription'
+                    )}                </button>
             )}
             {error && <p className="text-red-500 mt-2">{error}</p>}
         </div>
