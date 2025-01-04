@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { WordCard } from '@/components/Card'
 import { FeedbackBanner } from '@/components/FeedbackBanner'
 import { words, Word } from '@/utils/words'
-import SubscribeButton from '@/components/SubscribeButton'
 
 export default function Home() {
   const [currentWord, setCurrentWord] = useState<Word>(words[0])

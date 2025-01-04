@@ -48,6 +48,8 @@ const Sidebar = () => {
   };
 
   const isSubscribed = user?.publicMetadata?.subscribed as boolean;
+  console.log('user:', user);
+  console.log('isSubscribed:', isSubscribed);
 
   // Navigation items that use Next.js Link
   const navLinks = [

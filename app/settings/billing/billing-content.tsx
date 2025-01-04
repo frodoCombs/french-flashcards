@@ -94,58 +94,6 @@ export default function BillingPageContent() {
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
-
-      {/* <Card>
-        <CardHeader>
-          <CardTitle>Premium Subscription</CardTitle>
-          <CardDescription>
-            Get access to all premium features and support the development of French Flashcards
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="text-2xl font-bold">$9.99/month</div>
-            <ul className="space-y-2">
-              <li>✓ Unlimited flashcard decks</li>
-              <li>✓ Advanced statistics</li>
-              <li>✓ Priority support</li>
-              <li>✓ New features first</li>
-            </ul>
-          </div>
-        </CardContent>
-        <CardFooter>
-          {isSubscribed ? (
-            <Button
-              onClick={() => handleSubscriptionAction('unsubscribe')}
-              disabled={loading}
-              variant="outline"
-            >
-              {loading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Processing...
-                </>
-              ) : (
-                'Cancel Subscription'
-              )}
-            </Button>
-          ) : (
-            <Button
-              onClick={() => handleSubscriptionAction('subscribe')}
-              disabled={loading}
-            >
-              {loading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Processing...
-                </>
-              ) : (
-                'Subscribe Now'
-              )}
-            </Button>
-          )}
-        </CardFooter>
-      </Card> */}
     </div>
   );
 }
