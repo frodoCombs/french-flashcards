@@ -2,13 +2,13 @@ import {
   ClerkProvider,
   SignInButton,
   SignedIn,
-  SignedOut,
-  UserButton
+  SignedOut
 } from '@clerk/nextjs'
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from '@/components/Sidebar';
+import MobileNav from '@/components/MobileNav';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,11 +41,11 @@ export default function RootLayout({
           </SignedOut>
           <SignedIn>
             <div className="h-full relative">
+              <div className="md:hidden">
+                <MobileNav />
+              </div>
               <div className="hidden h-full md:flex md:w-72 md:flex-col md:fixed md:inset-y-0 z-[80] bg-gray-900">
-                <div className="p-4">
-                  <UserButton />
-                </div>
-                <Sidebar />
+              <Sidebar />
               </div>
               <main className="md:pl-72 h-full">
                 <div className="h-full px-4 py-4">

@@ -6,6 +6,8 @@ import { WordCard } from '@/components/Card'
 import { FeedbackBanner } from '@/components/FeedbackBanner'
 import { words, Word } from '@/utils/words'
 import { useUser } from '@clerk/nextjs'
+import MobileNav from '@/components/MobileNav'
+import Sidebar from '@/components/Sidebar'
 
 export default function WordsPage() {
   const { user } = useUser();
@@ -68,13 +70,12 @@ export default function WordsPage() {
             Feminine
           </Button>
         </div>
-      </div>
-
-      <FeedbackBanner
+        <FeedbackBanner
         isCorrect={isCorrect}
         isVisible={showFeedback}
         onNext={nextWord}
       />
+      </div>
     </main>
   )
 }

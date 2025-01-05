@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Settings, Crown, BookOpen, MessageSquare } from 'lucide-react';
+import { Home, Settings, Crown, BookOpen, MessageSquare, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useUser } from '@clerk/nextjs';
 import { useState } from 'react';
+import { UserButton } from '@clerk/nextjs';
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -81,6 +82,7 @@ const Sidebar = () => {
     <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
       <div className="px-3 py-2 flex-1">
         <div className="space-y-1">
+          <UserButton />
           {/* Regular navigation links */}
           {navLinks.map((route) => (
             <Link
@@ -121,7 +123,7 @@ const Sidebar = () => {
               {error}
             </div>
           )}
-        </div>
+        </div>      
       </div>
     </div>
   );
