@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Settings, Crown } from 'lucide-react';
+import { Home, Settings, Crown, BookOpen, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useUser } from '@clerk/nextjs';
 import { useState } from 'react';
@@ -48,8 +48,6 @@ const Sidebar = () => {
   };
 
   const isSubscribed = user?.publicMetadata?.subscribed as boolean;
-  console.log('user:', user);
-  console.log('isSubscribed:', isSubscribed);
 
   // Navigation items that use Next.js Link
   const navLinks = [
@@ -58,6 +56,18 @@ const Sidebar = () => {
       icon: Home,
       href: '/',
       color: 'text-sky-500'
+    },
+    {
+      label: 'Words',
+      icon: BookOpen,
+      href: '/words',
+      color: 'text-emerald-500'
+    },
+    {
+      label: 'Phrases',
+      icon: MessageSquare,
+      href: '/phrases',
+      color: 'text-violet-500'
     },
     {
       label: 'Settings',
