@@ -6,8 +6,7 @@ import { WordCard } from '@/components/Card'
 import { FeedbackBanner } from '@/components/FeedbackBanner'
 import { words, Word } from '@/utils/words'
 import { useUser } from '@clerk/nextjs'
-import MobileNav from '@/components/MobileNav'
-import Sidebar from '@/components/Sidebar'
+import SubscriptionBanner from '@/components/SubscriptionBanner'
 
 export default function WordsPage() {
   const { user } = useUser();
@@ -43,6 +42,8 @@ export default function WordsPage() {
   }, [])
 
   return (
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <SubscriptionBanner isSubscribed={isSubscribed} />
     <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-background text-foreground">
       <div className="relative flex flex-col items-center w-full max-w-md">
         <WordCard 
@@ -77,5 +78,6 @@ export default function WordsPage() {
       />
       </div>
     </main>
+  </div>
   )
 }

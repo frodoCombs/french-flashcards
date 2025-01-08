@@ -5,13 +5,20 @@ export function Hero() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] text-center px-4">
       <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-foreground mb-6">
-        Master French Gender Rules
+        Encore
       </h1>
-      <p className="text-xl text-muted-foreground max-w-2xl mb-8">
-        Learn French noun genders through interactive exercises. Practice with words, 
-        phrases, and get instant feedback on your progress.
-      </p>
-      <div className="flex flex-wrap gap-4 justify-center">
+      <h2 className="font-bold tracking-tight sm:text-2xl text-foreground mb-6">
+        A Simple French Practice App
+      </h2>
+        <p className="text-xl text-muted-foreground max-w-2xl mb-8">
+        Repetition is <a 
+            href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5625023/#abstract1" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="font-medium text-sky-500 hover:text-sky-600 underline-offset-4 hover:underline"
+          >key</a> to learning a new language. Practice with our curated list of words and phrases.  
+          </p>   
+        <div className="flex flex-wrap gap-4 justify-center">
         <Button asChild size="lg">
           <Link href="/words">
             Practice Words

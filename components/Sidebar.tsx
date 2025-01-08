@@ -7,12 +7,29 @@ import { cn } from '@/lib/utils';
 import { useUser } from '@clerk/nextjs';
 import { useState } from 'react';
 import { UserButton } from '@clerk/nextjs';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 const Sidebar = () => {
   const pathname = usePathname();
   const { user } = useUser();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  
+  const userButtonAppearance = {
+    elements: {
+      userButtonAvatarBox: "w-10 h-10",
+    },
+  };
 
   const handleSubscription = async (action: 'subscribe' | 'unsubscribe') => {
     try {
@@ -50,7 +67,6 @@ const Sidebar = () => {
 
   const isSubscribed = user?.publicMetadata?.subscribed as boolean;
 
-  // Navigation items that use Next.js Link
   const navLinks = [
     {
       label: 'Home',
@@ -70,20 +86,12 @@ const Sidebar = () => {
       href: '/phrases',
       color: 'text-violet-500'
     },
-    {
-      label: 'Settings',
-      icon: Settings,
-      href: '/settings',
-      color: 'text-gray-500'
-    }
   ];
 
   return (
     <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
       <div className="px-3 py-2 flex-1">
         <div className="space-y-1">
-          <UserButton />
-          {/* Regular navigation links */}
           {navLinks.map((route) => (
             <Link
               key={route.href}
@@ -100,23 +108,55 @@ const Sidebar = () => {
             </Link>
           ))}
 
-          {/* Subscription button styled like a nav item */}
-          <button
-            onClick={() => handleSubscription(isSubscribed ? 'unsubscribe' : 'subscribe')}
-            disabled={isLoading}
-            className={cn(
-              "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
-              "text-zinc-400"
-            )}
-          >
-            <div className="flex items-center flex-1">
-              <Crown className={cn(
-                "h-5 w-5 mr-3",
-                isSubscribed ? "text-yellow-500" : "text-zinc-400"
-              )} />
-              {isLoading ? 'Processing...' : (isSubscribed ? 'Subscribed' : 'Upgrade to Pro')}
-            </div>
-          </button>
+          {isSubscribed ? (
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <button
+                  disabled={isLoading}
+                  className={cn(
+                    "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
+                    "text-zinc-400"
+                  )}
+                >
+                  <div className="flex items-center flex-1">
+                    <Crown className="h-5 w-5 mr-3 text-yellow-500" />
+                    {isLoading ? 'Processing...' : 'Unsubscribe'}
+                  </div>
+                </button>
+              </AlertDialogTrigger>
+              <AlertDialogContent className="bg-[#1F2937] border-gray-700">
+                <AlertDialogHeader>
+                  <AlertDialogTitle className="text-white">Confirm Unsubscribe</AlertDialogTitle>
+                  <AlertDialogDescription className="text-gray-300">
+                    Are you sure you want to cancel your subscription? You'll lose access to all Pro features at the end of your current billing period.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel className="bg-gray-700 text-white hover:bg-gray-600">Cancel</AlertDialogCancel>
+                  <AlertDialogAction 
+                    onClick={() => handleSubscription('unsubscribe')}
+                    className="bg-red-600 text-white hover:bg-red-700"
+                  >
+                    Unsubscribe
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          ) : (
+            <button
+              onClick={() => handleSubscription('subscribe')}
+              disabled={isLoading}
+              className={cn(
+                "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
+                "text-zinc-400"
+              )}
+            >
+              <div className="flex items-center flex-1">
+                <Crown className="h-5 w-5 mr-3 text-zinc-400" />
+                {isLoading ? 'Processing...' : 'Upgrade to Pro'}
+              </div>
+            </button>
+          )}
 
           {error && (
             <div className="px-3 py-1 text-sm text-red-500">
@@ -124,6 +164,12 @@ const Sidebar = () => {
             </div>
           )}
         </div>      
+      </div>
+      <div className="p-3">
+        <div className="flex items-center text-sm group p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition text-zinc-400">
+          <UserButton appearance={userButtonAppearance}/>
+          <span className="ml-3">Profile</span>
+        </div>
       </div>
     </div>
   );

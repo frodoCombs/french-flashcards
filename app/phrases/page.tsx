@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { useUser } from '@clerk/nextjs'
+import ProGate from '@/components/ProGate';
+
 
 // You'll need to create this type and data
 type Phrase = {
@@ -31,6 +33,7 @@ export default function PhrasesPage() {
   const isSubscribed = user?.publicMetadata?.subscribed as boolean;
 
   return (
+    <ProGate isSubscribed={isSubscribed}>
     <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-background text-foreground">
       <div className="w-full max-w-2xl">
         <Card className="p-6">
@@ -65,5 +68,6 @@ export default function PhrasesPage() {
         </div>
       </div>
     </main>
+    </ProGate>
   )
 }

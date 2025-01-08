@@ -75,18 +75,18 @@ const MobileNav = () => {
       route: '/phrases',
       color: 'text-violet-500'
     },
-    {
-      label: 'Settings',
-      icon: Settings,
-      route: '/settings',
-      color: 'text-gray-500'
-    }
+    // {
+    //   label: 'Settings',
+    //   icon: Settings,
+    //   route: '/settings',
+    //   color: 'text-gray-500'
+    // }
   ]
 
   return (
     <header className="flex justify-between items-center px-4 py-2 bg-background border-b">
       <Link href="/" className="text-xl font-bold">
-        French Gender
+        Home
       </Link>
       
       <nav className="flex items-center gap-4">
