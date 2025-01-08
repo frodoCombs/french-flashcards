@@ -45,8 +45,7 @@ export default function WordsPage() {
     <div className="min-h-screen flex flex-col bg-background text-foreground">
     <SubscriptionBanner isSubscribed={isSubscribed} />
     <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-background text-foreground">
-      <div className="relative flex flex-col items-center w-full max-w-md">
-        <WordCard 
+    <div className="relative flex flex-col items-center w-full max-w-md min-h-[300px]">        <WordCard 
           word={currentWord.word} 
           definition={currentWord.definition} 
           showDefinition={showDefinition} 
@@ -70,12 +69,12 @@ export default function WordsPage() {
           >
             Feminine
           </Button>
-        </div>
         <FeedbackBanner
-        isCorrect={isCorrect}
-        isVisible={showFeedback}
-        onNext={nextWord}
-      />
+            isCorrect={isCorrect}
+            isVisible={showFeedback}
+            onNext={nextWord}
+          />
+          </div>
       </div>
     </main>
   </div>

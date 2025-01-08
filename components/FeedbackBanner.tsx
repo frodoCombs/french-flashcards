@@ -16,16 +16,15 @@ export const FeedbackBanner = ({
 }: FeedbackBannerProps) => {
   return (
     <div className={`
-      fixed bottom-0 left-0 right-0 
-      transform transition-transform duration-300 ease-in-out
-      ${isVisible ? 'translate-y-0' : 'translate-y-full'}
-      p-4
+      absolute left-0 right-0 -bottom-40
+      transform transition-all duration-300 ease-in-out
+      ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full pointer-events-none'}
     `}>
-      <Card className="max-w-2xl mx-auto">
-        <CardContent className="p-6">
+      <Card className="mx-auto">
+        <CardContent className="p-4">
           <div className="flex items-center gap-6">
             <div className={`
-              w-12 h-12 rounded-full flex items-center justify-center
+              w-10 h-10 rounded-full flex items-center justify-center
               ${isCorrect ? 'bg-green-100' : 'bg-red-100'}
             `}>
               {isCorrect ? (
