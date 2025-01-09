@@ -325,12 +325,12 @@ export default function PhrasesPage() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-background text-foreground">
       <div className="w-full max-w-2xl">
         <Card className="p-6">
-          <h2 className="text-2xl font-bold mb-4">{currentPhrase.french}</h2>
-          <p className="text-lg text-muted-foreground mb-4">{currentPhrase.english}</p>
-          
+          <h2 className="text-2xl font-bold mb-4">{currentPhrase.french}</h2>          
           {showExplanation ? (
             <div className="mt-4">
               <p className="text-sm text-muted-foreground">{currentPhrase.explanation}</p>
+              <p className="text-lg text-muted-foreground mb-4">{currentPhrase.english}</p>
+
             </div>
           ) : (
             <Button 
