@@ -32,7 +32,7 @@ const SubscriptionBanner: React.FC<SubscriptionBannerProps> = ({ isSubscribed })
       <div className="flex items-center">
         <Crown className="h-4 w-4 text-yellow-500" />
         <AlertDescription className="text-xs ml-2 text-gray-300">
-          Upgrade to Pro to access complete word list
+          Using limited word list. Upgrade to Pro for full access.
         </AlertDescription>
       </div>
       <Button

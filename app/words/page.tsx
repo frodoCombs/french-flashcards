@@ -19,7 +19,7 @@ export default function WordsPage() {
 
   const getRandomWord = () => {
     // Limit non-subscribed users to first 50 words
-    const availableWords = isSubscribed ? words : words.slice(0, 50)
+    const availableWords = isSubscribed ? words : words.slice(0, 100)
     const randomIndex = Math.floor(Math.random() * availableWords.length)
     return availableWords[randomIndex]
   }
