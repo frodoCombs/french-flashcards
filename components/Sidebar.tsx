@@ -1,5 +1,6 @@
 'use client';
 
+import { SignedIn, SignedOut } from '@clerk/nextjs'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, Settings, Crown, BookOpen, MessageSquare, User } from 'lucide-react';
@@ -18,6 +19,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button"
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -107,7 +109,7 @@ const Sidebar = () => {
               </div>
             </Link>
           ))}
-
+          <SignedIn >
           {isSubscribed ? (
             <AlertDialog>
               <AlertDialogTrigger asChild>
@@ -157,6 +159,7 @@ const Sidebar = () => {
               </div>
             </button>
           )}
+          </SignedIn>
 
           {error && (
             <div className="px-3 py-1 text-sm text-red-500">
@@ -167,8 +170,15 @@ const Sidebar = () => {
       </div>
       <div className="p-3">
         <div className="flex items-center text-sm group p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition text-zinc-400">
+          <SignedOut>
+            <Button asChild>
+              <Link href="/sign-in">Login</Link>
+            </Button>
+          </SignedOut>
+          <SignedIn>
           <UserButton appearance={userButtonAppearance}/>
           <span className="ml-3">Profile</span>
+          </SignedIn>
         </div>
       </div>
     </div>

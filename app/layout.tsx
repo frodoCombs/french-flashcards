@@ -34,12 +34,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className="h-full">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}>
-          <SignedOut>
+          {/* <SignedOut>
             <div className="flex min-h-full flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
               <SignInButton />
             </div>
-          </SignedOut>
-          <SignedIn>
+          </SignedOut> */}
+          {/* <SignedIn> */}
             <div className="h-full relative">
               <div className="md:hidden">
                 <MobileNav />
@@ -53,7 +53,7 @@ export default function RootLayout({
                 </div>
               </main>
             </div>
-          </SignedIn>
+          {/* </SignedIn> */}
         </body>
       </html>
     </ClerkProvider>
